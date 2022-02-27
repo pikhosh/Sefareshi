@@ -325,7 +325,7 @@ def selected_other_feature():
 def selected_js(js_change):
 
     if pin.js_feature == ['امکان استفاده از جاوا اسکریپت رو روی وبلاگ تون فعال کردین؟']:
-        with use_scope("mmd"):
+        with use_scope("js"):
             put_checkbox("js_feature_list", options=["اضافه کردن زمان مورد نیاز برای مطالعه مطالب",
                 "اضافه کردن دکمه برای کنترل حالت رنگی",
                 ])
