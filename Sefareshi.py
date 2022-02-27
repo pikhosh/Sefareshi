@@ -4,7 +4,7 @@ from pywebio.pin import *
 from pywebio.session import *
 from pywebio.platform import *
 import requests
-import clipboard
+import xerox
 
 
 
@@ -367,13 +367,13 @@ def generate():
 
    
 def copy_html():
-    clipboard.copy(final_html_code)
+    xerox.copy(final_html_code)
     toast("حله کپی شد :) برو عشق کن")
 
 
 
 def copy_css():
-    clipboard.copy(final_css_code)
+    xerox.copy(final_css_code)
     toast("کپی شد! اینم از کد CSS :)")
 
 
