@@ -1,3 +1,4 @@
 https://code.aliyun.com/wang0618/pywebio/repository/archive.zip
 requests
 pyperclip
+gtk
