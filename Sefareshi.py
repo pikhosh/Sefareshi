@@ -492,4 +492,5 @@ pre {
 """, js_code="""$('footer').html('طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> | قدرت گرفته از <a href="https://www.pyweb.io/" target="_blank">PyWebIO</a>')""")
 
 
-start_server(main, port=8080, debug=True)
+
+start_server(main, port=PORT, websocket_ping_interval=30)
