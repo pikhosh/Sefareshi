@@ -367,13 +367,13 @@ def generate():
 
    
 def copy_html():
-    pyperclip.copy(final_html_code)
+    run_js('navigator.clipboard.writeText(FHC)', FHC=final_html_code)
     toast("حله کپی شد :) برو عشق کن")
 
 
 
 def copy_css():
-    pyperclip.copy(final_css_code)
+    run_js('navigator.clipboard.writeText(FCC)', FCC=final_css_code)
     toast("کپی شد! اینم از کد CSS :)")
 
 
