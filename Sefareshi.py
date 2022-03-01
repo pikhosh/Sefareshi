@@ -4,8 +4,6 @@ from pywebio.pin import *
 from pywebio.session import *
 from pywebio.platform import *
 import requests
-import pyperclip
-
 
 
 def selected_theme(theme_change):
