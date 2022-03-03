@@ -442,6 +442,15 @@ def main():
 
 
 config(title="سفارشی!", theme="sketchy", description="قالب هارو اونطوری که می خوای سفارشی کن!", css_style="""@import url('https://v1.fontapi.ir/css/MikhakFD:100;200;300;400;500;600;700;800;900');
+
+@font-face {
+    font-family: Behdad;
+    src: url(https://bayanbox.ir/download/521927549352849432/Behdad-Regular.ttf), url(https://bayanbox.ir/download/2566563334380828087/Behdad-Regular.otf), url(https://bayanbox.ir/download/8447146387304990502/Behdad-Regular.woff), url(https://bayanbox.ir/download/7309035304661827246/Behdad-Regular.woff2);
+    font-weight: normal;
+}
+
+@import url('https://v1.fontapi.ir/css/Sahel:300;400;600;700;900');
+
 body {
     text-align: right;
 }
