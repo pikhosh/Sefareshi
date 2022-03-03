@@ -278,7 +278,7 @@ def selected_font_preview(selected_font_change):
 
     elif pin.font_select == "بهداد":
         with use_scope("font_preview", clear=True):
-            put_markdown("فونت ساحل قراره یه **همچین** شکل و شمایلی داشته باشه *دوست گرامی*!").style("font-family: behdad")
+            put_markdown("فونت بهداد قراره یه **همچین** شکل و شمایلی داشته باشه *دوست گرامی*!").style("font-family: behdad")
 
 
 
