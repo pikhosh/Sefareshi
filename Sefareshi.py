@@ -114,8 +114,6 @@ code {
         
 
 
-
-
     elif pin.theme_select == "افکار":
 
         afkar_html_url = requests.get("https://raw.githubusercontent.com/pikhosh/Afkar/main/index.html")
@@ -171,6 +169,11 @@ code {
         pin_update(name="light_bg", value="#ffffff")
         pin_update(name="dark_bg", value="#252525")
         pin_update(name="other_feature", value="")
+    
+    
+
+    selected_font_preview(True)
+
 
 
 
@@ -265,6 +268,17 @@ code {
 
 :root {
     --Font: Behdad, 'Rubik'"""
+
+
+
+def selected_font_preview(selected_font_change):
+    if pin.font_select == "ساحل":
+        with use_scope("font_preview", clear=True):
+            put_markdown("فونت ساحل قراره یه **همچین** شکل و شمایلی داشته باشه *دوست گرامی*!").style("font-family: sahel")
+
+    elif pin.font_select == "بهداد":
+        with use_scope("font_preview", clear=True):
+            put_markdown("فونت ساحل قراره یه **همچین** شکل و شمایلی داشته باشه *دوست گرامی*!").style("font-family: behdad")
 
 
 
@@ -394,6 +408,8 @@ def main():
     
     put_markdown("## کدوم فونت؟")
     put_radio("font_select", options=["ساحل", "بهداد"])
+    selected_font_change = pin_on_change(name="font_select", onchange=selected_font_preview)
+    put_scope(name="font_preview")
    
 
 
