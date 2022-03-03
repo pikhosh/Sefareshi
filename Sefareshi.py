@@ -111,6 +111,15 @@ code {
         pin_update(name="light_bg", value="#FFF2E4")
         pin_update(name="dark_bg", value="#4D4944")
         pin_update(name="other_feature", value="قابلیت نمایش تصاویر اصلی مطالب؟")
+
+        with use_scope("theme_preview", clear=True):
+            put_row([
+
+                put_image(src="https://user-images.githubusercontent.com/73311467/154791394-ade77cf7-81c1-4103-95ae-3aa3922062d4.png", title="قالب دفترچه حالت روشن").style("border-radius: 10px"), None,
+                put_image(src="https://user-images.githubusercontent.com/73311467/154791399-ff89d206-149f-47c4-b868-02425ddcd28b.png", title="قالب دفترچه حالت تاریک").style("border-radius: 10px")
+            
+            ])
+           
         
 
 
@@ -169,7 +178,16 @@ code {
         pin_update(name="light_bg", value="#ffffff")
         pin_update(name="dark_bg", value="#252525")
         pin_update(name="other_feature", value="")
+
+        with use_scope("theme_preview", clear=True):
+            put_row([
+                put_image(src="https://user-images.githubusercontent.com/73311467/154895089-638b539a-a912-4924-b7e6-989eb0e506f9.png", title="قالب افکار حالت روشن").style("border-radius: 10px"), None,
+                put_image(src="https://user-images.githubusercontent.com/73311467/154895116-13b86329-68b7-479e-a3a4-5404b17a5585.png", title="قالب افکار حالت تاریک").style("border-radius: 10px")
     
+
+
+            ])
+            
     
 
     selected_font_preview(True)
@@ -405,6 +423,7 @@ def main():
     put_markdown("## 🧐 قالب مورد نظرت رو انتخاب کن")
     put_radio("theme_select", options=["دفترچه", "افکار"])
     theme_change = pin_on_change(name="theme_select", onchange=selected_theme)
+    put_scope(name="theme_preview")
     
     put_markdown("## کدوم فونت؟")
     put_radio("font_select", options=["ساحل", "بهداد"])
