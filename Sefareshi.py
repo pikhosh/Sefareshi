@@ -8,84 +8,94 @@ import requests
 
 def selected_theme(theme_change):
 
+    with put_loading(scope="loading").style("width: 20px; height: 20px; margin-left: 5px;"):
+
+        if pin.theme_select == "دفترچه":
 
 
-    if pin.theme_select == "دفترچه":
+            daftarche_html_url = requests.get("https://raw.githubusercontent.com/pikhosh/Daftarche/main/index.html")
+            daftarche_css_url = requests.get("https://raw.githubusercontent.com/pikhosh/Daftarche/main/style.css")
+            global daftarche_html_content
+            daftarche_html_content = daftarche_html_url.text
+            global daftarche_css_content 
+            daftarche_css_content = daftarche_css_url.text
 
-        daftarche_html_url = requests.get("https://raw.githubusercontent.com/pikhosh/Daftarche/main/index.html")
-        daftarche_css_url = requests.get("https://raw.githubusercontent.com/pikhosh/Daftarche/main/style.css")
-        global daftarche_html_content
-        daftarche_html_content = daftarche_html_url.text
-        global daftarche_css_content 
-        daftarche_css_content = daftarche_css_url.text
+            global og_html_font_code
+            og_html_font_code = """<link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet" type="text/css">"""
+            global og_css_font_code
+            og_css_font_code = """@font-face {
+        font-family: Sahel;
+        src: url('Sahel.eot');
+        src: url('Sahel.eot?#iefix') format('embedded-opentype'), url('Sahel.woff2') format('woff2'), url('Sahel.woff') format('woff'), url('Sahel.ttf') format('truetype');
+        font-weight: normal;
+    }
 
-        global og_html_font_code
-        og_html_font_code = """<link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet" type="text/css">"""
-        global og_css_font_code
-        og_css_font_code = """@font-face {
-    font-family: Sahel;
-    src: url('Sahel.eot');
-    src: url('Sahel.eot?#iefix') format('embedded-opentype'), url('Sahel.woff2') format('woff2'), url('Sahel.woff') format('woff'), url('Sahel.ttf') format('truetype');
-    font-weight: normal;
-}
+    @font-face {
+        font-family: Sahel;
+        src: url('Sahel-Bold.eot');
+        src: url('Sahel-Bold.eot?#iefix') format('embedded-opentype'), url('Sahel-Bold.woff2') format('woff2'), url('Sahel-Bold.woff') format('woff'), url('Sahel-Bold.ttf') format('truetype');
+        font-weight: bold;
+    }
 
-@font-face {
-    font-family: Sahel;
-    src: url('Sahel-Bold.eot');
-    src: url('Sahel-Bold.eot?#iefix') format('embedded-opentype'), url('Sahel-Bold.woff2') format('woff2'), url('Sahel-Bold.woff') format('woff'), url('Sahel-Bold.ttf') format('truetype');
-    font-weight: bold;
-}
+    @font-face {
+        font-family: Sahel;
+        src: url('Sahel-Light.eot');
+        src: url('Sahel-Light.eot?#iefix') format('embedded-opentype'), url('Sahel-Light.woff2') format('woff2'), url('Sahel-Light.woff') format('woff'), url('Sahel-Light.ttf') format('truetype');
+        font-weight: 300;
+    }
 
-@font-face {
-    font-family: Sahel;
-    src: url('Sahel-Light.eot');
-    src: url('Sahel-Light.eot?#iefix') format('embedded-opentype'), url('Sahel-Light.woff2') format('woff2'), url('Sahel-Light.woff') format('woff'), url('Sahel-Light.ttf') format('truetype');
-    font-weight: 300;
-}
+    @font-face {
+        font-family: Sahel;
+        src: url('Sahel-SemiBold.eot');
+        src: url('Sahel-SemiBold.eot?#iefix') format('embedded-opentype'), url('Sahel-SemiBold.woff2') format('woff2'), url('Sahel-SemiBold.woff') format('woff'), url('Sahel-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+    }
 
-@font-face {
-    font-family: Sahel;
-    src: url('Sahel-SemiBold.eot');
-    src: url('Sahel-SemiBold.eot?#iefix') format('embedded-opentype'), url('Sahel-SemiBold.woff2') format('woff2'), url('Sahel-SemiBold.woff') format('woff'), url('Sahel-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-}
+    @font-face {
+        font-family: Sahel;
+        src: url('Sahel-Black.eot');
+        src: url('Sahel-Black.eot?#iefix') format('embedded-opentype'), url('Sahel-Black.woff2') format('woff2'), url('Sahel-Black.woff') format('woff'), url('Sahel-Black.ttf') format('truetype');
+        font-weight: 900;
+    }
 
-@font-face {
-    font-family: Sahel;
-    src: url('Sahel-Black.eot');
-    src: url('Sahel-Black.eot?#iefix') format('embedded-opentype'), url('Sahel-Black.woff2') format('woff2'), url('Sahel-Black.woff') format('woff'), url('Sahel-Black.ttf') format('truetype');
-    font-weight: 900;
-}
+    @font-face {
+        font-family: Vazir Code;
+        src: url('Vazir-Code.eot');
+        src: url('Vazir-Code.eot?#iefix') format('embedded-opentype'), url('Vazir-Code.woff') format('woff'), url('Vazir-Code.ttf') format('truetype');
+        font-weight: normal;
+    }
 
-@font-face {
-    font-family: Vazir Code;
-    src: url('Vazir-Code.eot');
-    src: url('Vazir-Code.eot?#iefix') format('embedded-opentype'), url('Vazir-Code.woff') format('woff'), url('Vazir-Code.ttf') format('truetype');
-    font-weight: normal;
-}
+    @font-face {
+        font-family: Vazir Code Hack;
+        src: url('Vazir-Code-Hack.eot');
+        src: url('Vazir-Code-Hack.eot?#iefix') format('embedded-opentype'), url('Vazir-Code-Hack.woff') format('woff'), url('Vazir-Code-Hack.ttf') format('truetype');
+        font-weight: normal;
+    }
 
-@font-face {
-    font-family: Vazir Code Hack;
-    src: url('Vazir-Code-Hack.eot');
-    src: url('Vazir-Code-Hack.eot?#iefix') format('embedded-opentype'), url('Vazir-Code-Hack.woff') format('woff'), url('Vazir-Code-Hack.ttf') format('truetype');
-    font-weight: normal;
-}
+    pre,
+    code {
+        font-family: 'Vazir Code', 'Vazir Code Hack', monospaced;
+    }
 
-pre,
-code {
-    font-family: 'Vazir Code', 'Vazir Code Hack', monospaced;
-}
+    :root {
+        --Font: Sahel"""
 
-:root {
-    --Font: Sahel"""
+            global og_css_light_bg
+            og_css_light_bg = """MainBGColor: #FFF2E4"""
+            global og_css_dark_bg
+            og_css_dark_bg = """MainBGColor: #4D4944"""
 
-        global og_css_light_bg
-        og_css_light_bg = """MainBGColor: #FFF2E4"""
-        global og_css_dark_bg
-        og_css_dark_bg = """MainBGColor: #4D4944"""
+            global og_html_list_img_code
+            og_html_list_img_code = """<check:if post_image>
+                                    <div class="thumbnail">
 
-        global og_html_list_img_code
-        og_html_list_img_code = """<check:if post_image>
+                                        <img src="(*post_image*)">
+
+
+                                    </div>
+                                </check:if>"""
+            global og_html_post_img_code
+            og_html_post_img_code = """<check:if post_image>
                                 <div class="thumbnail">
 
                                     <img src="(*post_image*)">
@@ -93,104 +103,95 @@ code {
 
                                 </div>
                             </check:if>"""
-        global og_html_post_img_code
-        og_html_post_img_code = """<check:if post_image>
-                            <div class="thumbnail">
 
-                                <img src="(*post_image*)">
+            global og_html_footer_code
+            og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a>"""
 
 
-                            </div>
-                        </check:if>"""
+            pin_update(name="font_select", value="ساحل")
+            pin_update(name="light_bg", value="#FFF2E4")
+            pin_update(name="dark_bg", value="#4D4944")
+            pin_update(name="other_feature", value="قابلیت نمایش تصاویر اصلی مطالب؟")
 
-        global og_html_footer_code
-        og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a>"""
+            with use_scope("theme_preview", clear=True):
+                put_row([
 
-
-        pin_update(name="font_select", value="ساحل")
-        pin_update(name="light_bg", value="#FFF2E4")
-        pin_update(name="dark_bg", value="#4D4944")
-        pin_update(name="other_feature", value="قابلیت نمایش تصاویر اصلی مطالب؟")
-
-        with use_scope("theme_preview", clear=True):
-            put_row([
-
-                put_image(src="https://user-images.githubusercontent.com/73311467/154791394-ade77cf7-81c1-4103-95ae-3aa3922062d4.png", title="قالب دفترچه حالت روشن").style("border-radius: 10px"), None,
-                put_image(src="https://user-images.githubusercontent.com/73311467/154791399-ff89d206-149f-47c4-b868-02425ddcd28b.png", title="قالب دفترچه حالت تاریک").style("border-radius: 10px")
+                    put_image(src="https://user-images.githubusercontent.com/73311467/154791394-ade77cf7-81c1-4103-95ae-3aa3922062d4.png", title="قالب دفترچه حالت روشن").style("border-radius: 10px"), None,
+                    put_image(src="https://user-images.githubusercontent.com/73311467/154791399-ff89d206-149f-47c4-b868-02425ddcd28b.png", title="قالب دفترچه حالت تاریک").style("border-radius: 10px")
+                
+                ])
             
-            ])
-           
+            
+
+        elif pin.theme_select == "افکار":
+
+
+            afkar_html_url = requests.get("https://raw.githubusercontent.com/pikhosh/Afkar/main/index.html")
+            afkar_css_url = requests.get("https://raw.githubusercontent.com/pikhosh/Afkar/main/style.css")
+            global afkar_html_content
+            afkar_html_content = afkar_html_url.text
+            global afkar_css_content
+            afkar_css_content = afkar_css_url.text
+
+            og_html_font_code = """<style>
+                @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+            </style>"""
+            og_css_font_code = """@font-face {
+        font-family: Behdad;
+        src: url(https://bayanbox.ir/download/521927549352849432/Behdad-Regular.ttf), url(https://bayanbox.ir/download/2566563334380828087/Behdad-Regular.otf), url(https://bayanbox.ir/download/8447146387304990502/Behdad-Regular.woff), url(https://bayanbox.ir/download/7309035304661827246/Behdad-Regular.woff2);
+        font-weight: normal;
+    }
+
+    @font-face {
+        font-family: Vazir Code;
+        src: url('Vazir-Code.eot');
+        src: url('Vazir-Code.eot?#iefix') format('embedded-opentype'), url('Vazir-Code.woff') format('woff'), url('Vazir-Code.ttf') format('truetype');
+        font-weight: normal;
+    }
+
+    @font-face {
+        font-family: Vazir Code Hack;
+        src: url('Vazir-Code-Hack.eot');
+        src: url('Vazir-Code-Hack.eot?#iefix') format('embedded-opentype'), url('Vazir-Code-Hack.woff') format('woff'), url('Vazir-Code-Hack.ttf') format('truetype');
+        font-weight: normal;
+    }
+
+    pre,
+    code {
+        font-family: 'Vazir Code', 'Vazir Code Hack', monospaced;
+    }
+
+    :root {
+        --Font: Behdad, 'Rubik'"""
+
+            og_css_light_bg = """BackgroundColor: white"""
+            og_css_dark_bg = """BackgroundColor: #252525"""
+
+            og_html_post_img_code = """<h1>(*post_title*)</h1>
+                <div id="post-detail">"""
+
+
+            og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> (الهام گرفته از: <a href="https://github.com/joway/hugo-theme-yinyang" target="_blank" title="منبع طراحی">YinYang)</a>"""
+
+
+
+            pin_update(name="font_select", value="بهداد")
+            pin_update(name="light_bg", value="#ffffff")
+            pin_update(name="dark_bg", value="#252525")
+            pin_update(name="other_feature", value="")
+
+            with use_scope("theme_preview", clear=True):
+                put_row([
+                    put_image(src="https://user-images.githubusercontent.com/73311467/154895089-638b539a-a912-4924-b7e6-989eb0e506f9.png", title="قالب افکار حالت روشن").style("border-radius: 10px"), None,
+                    put_image(src="https://user-images.githubusercontent.com/73311467/154895116-13b86329-68b7-479e-a3a4-5404b17a5585.png", title="قالب افکار حالت تاریک").style("border-radius: 10px")
         
 
 
-    elif pin.theme_select == "افکار":
+                ])
+                
+        
 
-        afkar_html_url = requests.get("https://raw.githubusercontent.com/pikhosh/Afkar/main/index.html")
-        afkar_css_url = requests.get("https://raw.githubusercontent.com/pikhosh/Afkar/main/style.css")
-        global afkar_html_content
-        afkar_html_content = afkar_html_url.text
-        global afkar_css_content
-        afkar_css_content = afkar_css_url.text
-
-        og_html_font_code = """<style>
-            @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        </style>"""
-        og_css_font_code = """@font-face {
-    font-family: Behdad;
-    src: url(https://bayanbox.ir/download/521927549352849432/Behdad-Regular.ttf), url(https://bayanbox.ir/download/2566563334380828087/Behdad-Regular.otf), url(https://bayanbox.ir/download/8447146387304990502/Behdad-Regular.woff), url(https://bayanbox.ir/download/7309035304661827246/Behdad-Regular.woff2);
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: Vazir Code;
-    src: url('Vazir-Code.eot');
-    src: url('Vazir-Code.eot?#iefix') format('embedded-opentype'), url('Vazir-Code.woff') format('woff'), url('Vazir-Code.ttf') format('truetype');
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: Vazir Code Hack;
-    src: url('Vazir-Code-Hack.eot');
-    src: url('Vazir-Code-Hack.eot?#iefix') format('embedded-opentype'), url('Vazir-Code-Hack.woff') format('woff'), url('Vazir-Code-Hack.ttf') format('truetype');
-    font-weight: normal;
-}
-
-pre,
-code {
-    font-family: 'Vazir Code', 'Vazir Code Hack', monospaced;
-}
-
-:root {
-    --Font: Behdad, 'Rubik'"""
-
-        og_css_light_bg = """BackgroundColor: white"""
-        og_css_dark_bg = """BackgroundColor: #252525"""
-
-        og_html_post_img_code = """<h1>(*post_title*)</h1>
-            <div id="post-detail">"""
-
-
-        og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> (الهام گرفته از: <a href="https://github.com/joway/hugo-theme-yinyang" target="_blank" title="منبع طراحی">YinYang)</a>"""
-
-
-
-        pin_update(name="font_select", value="بهداد")
-        pin_update(name="light_bg", value="#ffffff")
-        pin_update(name="dark_bg", value="#252525")
-        pin_update(name="other_feature", value="")
-
-        with use_scope("theme_preview", clear=True):
-            put_row([
-                put_image(src="https://user-images.githubusercontent.com/73311467/154895089-638b539a-a912-4924-b7e6-989eb0e506f9.png", title="قالب افکار حالت روشن").style("border-radius: 10px"), None,
-                put_image(src="https://user-images.githubusercontent.com/73311467/154895116-13b86329-68b7-479e-a3a4-5404b17a5585.png", title="قالب افکار حالت تاریک").style("border-radius: 10px")
-    
-
-
-            ])
-            
-    
-
-    selected_font_preview(True)
+        selected_font_preview(True)
 
 
 
@@ -419,8 +420,17 @@ def main():
     """ % image_url)
 
 
+  
+    put_row([
 
+    put_scope("loading"),
     put_markdown("## 🧐 قالب مورد نظرت رو انتخاب کن")
+    
+
+
+    ], size="max-content").style("align-items: center")
+    
+        
     put_radio("theme_select", options=["دفترچه", "افکار"])
     theme_change = pin_on_change(name="theme_select", onchange=selected_theme)
     put_scope(name="theme_preview")
