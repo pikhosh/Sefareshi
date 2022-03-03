@@ -368,7 +368,7 @@ def selected_js(js_change):
 
 def generate():
     
-    html_footer_code = og_html_footer_code + """ |<a href="pikhosh.blog.ir"> سفارشی!</a>"""
+    html_footer_code = og_html_footer_code + """ | <a href="pikhosh.blog.ir">سفارشی!</a>"""
 
     selected_font()
     selected_light_bg()
