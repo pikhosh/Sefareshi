@@ -104,6 +104,58 @@ code {
                             </div>
                         </check:if>"""
 
+
+            global og_html_script_code
+            og_html_script_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a>
+
+    </div>"""
+
+
+            global og_css_dark_mode_code
+            og_css_dark_mode_code = """@media (prefers-color-scheme: dark) {
+     :root {
+        --MainBGColor: #4d4944;
+        --MainBoxColor: #4D4A4A;
+        --SideBarColor: #4D4944;
+        --PostBoxColor: #4D4D4D;
+        --TextColor: #ffffffde;
+        --MainBoxShadowColor: #00000080;
+        --PaginationBGColor: #4D4D4D;
+        --SideBarTitleShodow: inset 0 3px 6px -5px #00000080;
+        --CommentBGColor: #4D4D4D;
+        --CommentFormBGColor: #4D4D4D;
+        --SelectedBGColor: #48433d;
+        --CommentFormFocusOutlineColor: #606060;
+    }
+    .prettyprint>span {
+        filter: invert(1);
+    }
+    .search-box.dark .submit,
+    .search-box.dark .submit:hover,
+    .search-box.dark .submit:focus {
+        background-color: unset;
+    }
+    .comment-form input {
+        color: var(--TextColor);
+    }
+    .search-box.dark {
+        border: unset;
+        background: unset;
+    }
+    .search-box.dark ::placeholder {
+        color: var(--TextColor);
+    }
+    .search-box .submit {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z' fill='rgba(255,255,255,0.8705882352941177)'/%3E%3C/svg%3E");
+    }
+}"""
+
+
+            global og_html_dark_mode_icon
+            og_html_dark_mode_icon = """<a href="(*blog_link*)">(*blog_title*)</a> . <span id="description">(*blog_short_description*)</span>
+        </h1>"""
+
+
             global og_html_footer_code
             og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a>"""
 
@@ -169,6 +221,30 @@ code {
 
             og_html_post_img_code = """<h1>(*post_title*)</h1>
             <div id="post-detail">"""
+
+
+            og_html_script_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> (الهام گرفته از: <a href="https://github.com/joway/hugo-theme-yinyang" target="_blank" title="منبع طراحی">YinYang)</a>
+    </div>"""
+
+
+            og_css_dark_mode_code = """@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--BackgroundColor);
+        color: var(--FontColor);
+    }
+     :root {
+        --BorderColor: white;
+        --FontColor: #ffffffde;
+        --BackgroundColor: #252525;
+    }
+    .prettyprint>span {
+        filter: invert(1);
+    }
+}"""
+
+
+            og_html_dark_mode_icon = """<h1><a href="(*blog_link*)">(*blog_title*)</a></h1>"""
+
 
 
             og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> (الهام گرفته از: <a href="https://github.com/joway/hugo-theme-yinyang" target="_blank" title="منبع طراحی">YinYang)</a>"""
@@ -366,24 +442,148 @@ def selected_js(js_change):
 
 
 
+def selected_color_mode():
+    if pin.js_feature_list == ["اضافه کردن دکمه برای کنترل حالت رنگی"]:
+        
+
+        global html_script_code
+        html_script_code = og_html_script_code + """<script>
+        function darkMode() {
+            var darkModeCheckBox = document.querySelector("#dark-mode-button").checked
+            var root = document.documentElement;
+            var darkModeLabel = document.querySelector("#dark-mode-label")
+
+            if (darkModeCheckBox) {
+                root.setAttribute("class", "dark-mode")
+                darkModeLabel.innerHTML = `<i class="ri-lightbulb-line"></i>`
+                darkModeLabel.title = ("title", "نه دیگه خیلی تاریکه؛ روشن کنین آقا!")
+
+            } else {
+                root.removeAttribute("class", "dark-mode")
+                darkModeLabel.innerHTML = `<i class="ri-lightbulb-flash-line"></i>`
+                darkModeLabel.title = ("title", "حالا خودمونیم... خاموش کنیم بهتر بود!")
+
+            }
+        }
+    </script>"""
+        global html_dark_mode_icon 
+        html_dark_mode_icon = og_html_dark_mode_icon + """<input type="checkbox" id="dark-mode-button" onclick="darkMode()">
+        <label for="dark-mode-button" id="dark-mode-label" title="آقا برقا رو خاموش کنیم؟"><i class="ri-lightbulb-flash-line"></i></label>"""       
+        
+        if pin.theme_select == "دفترچه":
+            global css_dark_mode_code
+            css_dark_mode_code = """.prettyprint>span {
+    filter: var(--PrettyFilter);
+}
+.search-box.dark .submit,
+.search-box.dark .submit:hover,
+.search-box.dark .submit:focus {
+    background-color: var(--DarkModeUnset);
+}
+.comment-form input {
+    color: var(--TextColor);
+}
+.search-box.dark {
+    border: var(--DarkModeUnset);
+    background: var(--DarkModeUnset);
+}
+.search-box.dark ::placeholder {
+    color: var(--TextColor);
+}
+.search-box .submit {
+    background-image: var(--SearchBGImage);
+}
+
+.dark-mode {
+    --MainBGColor: #4D4944;
+    --MainBoxColor: #4D4A4A;
+    --SideBarColor: #4D4944;
+    --PostBoxColor: #4D4D4D;
+    --TextColor: #ffffffde;
+    --MainBoxShadowColor: #00000080;
+    --PaginationBGColor: #4D4D4D;
+    --SideBarTitleShodow: inset 0 3px 6px -5px #00000080;
+    --CommentBGColor: #4D4D4D;
+    --CommentFormBGColor: #4D4D4D;
+    --SelectedBGColor: #48433d;
+    --CommentFormFocusOutlineColor: #606060;
+    --PrettyFilter: invert(1);
+    --SearchBGImage: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z' fill='rgba(255,255,255,0.8705882352941177)'/%3E%3C/svg%3E");
+    --DarkModeUnset: unset;
+}
+
+#dark-mode-button {
+    display: none;
+}
+
+#dark-mode-label {
+    cursor: pointer;
+    font-size: large;
+    margin-right: 2px;
+}"""
+            
+
+        elif pin.theme_select == "افکار":
+            css_dark_mode_code = """body {
+    background-color: var(--BackgroundColor);
+    color: var(--FontColor);
+}
+
+
+.prettyprint>span {
+    filter: var(--PrettyFilter);
+}
+
+
+.dark-mode {
+    --PrettyFilter: invert(1);
+    --BorderColor: white;
+    --FontColor: #ffffffde;
+    --BackgroundColor: #252525;
+}
+
+#dark-mode-button {
+    display: none;
+}
+
+#dark-mode-label {
+    cursor: pointer;
+    font-size: large;
+    margin-right: 2px;
+}"""
+            
+
+    else:
+        
+
+        html_script_code = og_html_script_code
+
+        html_dark_mode_icon = og_html_dark_mode_icon
+
+        
+        css_dark_mode_code = og_css_dark_mode_code
+
+        
+
 def generate():
     
-    html_footer_code = og_html_footer_code + """ | <a href="pikhosh.blog.ir">سفارشی!</a>"""
+    html_footer_code = og_html_footer_code + """ | <a href="https://sefareshi.herokuapp.com">سفارشی!</a>"""
 
     selected_font()
     selected_light_bg()
     selected_dark_bg()
     selected_other_feature()
+    selected_color_mode()
     
     if pin.theme_select == "دفترچه":
         global final_html_code
-        final_html_code = daftarche_html_content.replace(og_html_font_code, html_font_code).replace(og_html_list_img_code, html_img_code).replace(og_html_post_img_code, html_img_code).replace(og_html_footer_code, html_footer_code)
+        final_html_code = daftarche_html_content.replace(og_html_font_code, html_font_code).replace(og_html_list_img_code, html_img_code).replace(og_html_post_img_code, html_img_code).replace(og_html_script_code, html_script_code).replace(og_html_dark_mode_icon, html_dark_mode_icon).replace(og_html_footer_code, html_footer_code)
         global final_css_code
-        final_css_code = daftarche_css_content.replace(og_css_font_code, css_font_code).replace(og_css_light_bg, css_light_bg).replace(og_css_dark_bg, css_dark_bg)
+        final_css_code = daftarche_css_content.replace(og_css_font_code, css_font_code).replace(og_css_light_bg, css_light_bg).replace(og_css_dark_bg, css_dark_bg).replace(og_css_dark_mode_code, css_dark_mode_code)
 
     elif pin.theme_select == "افکار":
-        final_html_code = afkar_html_content.replace(og_html_font_code, html_font_code).replace(og_html_post_img_code, html_img_code).replace(og_html_footer_code, html_footer_code)
-        final_css_code = afkar_css_content.replace(og_css_font_code, css_font_code).replace(og_css_light_bg, css_light_bg).replace(og_css_dark_bg, css_dark_bg)
+        final_html_code = afkar_html_content.replace(og_html_font_code, html_font_code).replace(og_html_post_img_code, html_img_code).replace(og_html_script_code, html_script_code).replace(og_html_dark_mode_icon, html_dark_mode_icon).replace(og_html_footer_code, html_footer_code)
+        final_css_code = afkar_css_content.replace(og_css_font_code, css_font_code).replace(og_css_light_bg, css_light_bg).replace(og_css_dark_bg, css_dark_bg).replace(og_css_dark_mode_code, css_dark_mode_code)
 
     with use_scope("output", clear=True):
         put_markdown("# 👨‍🍳 کد شما حاضره:")
@@ -457,7 +657,7 @@ def main():
 
 
     put_markdown("## جاوا اسکریپت")
-    put_info("بخش جاوا اسکریپت هنوز در دست توسعه است! مایه خوشحالیه اگه صفحات رو دنبال کنین تا به محض آماده سازی مطلع بشین :)")
+    put_info("گزینه «زمان مطالعه» هنوز در دست توسعه است! مایه خوشحالیه اگه صفحات رو دنبال کنین تا به محض آماده سازی مطلع بشین :)")
     put_checkbox("js_feature", options=["امکان استفاده از جاوا اسکریپت رو روی وبلاگ تون فعال کردین؟"])
     js_change = pin_on_change(name="js_feature", onchange=selected_js)
 
@@ -544,7 +744,7 @@ pre {
 
 
 
-""", js_code="""$('footer').html('طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> | قدرت گرفته از <a href="https://www.pyweb.io/" target="_blank">PyWebIO</a>')""")
+""", js_code="""$('footer').html('<a href="https://instagram.com/pikhosh" target="_blank" title="صفحه اینستاگرام"><i class="ri-instagram-line"></i></a><a href="https://youtube.com/channel/UCky4IRq9d_XRdNuWcQCqD3g" target="_blank" title="کانال یوتیوب"><i class="ri-youtube-line"></i></a><a href="https://github.com/pikhosh/Sefareshi" target="_blank" title="مخزن گیت هاب"><i class="ri-github-line"></i></a> طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> | قدرت گرفته از <a href="https://www.pyweb.io/" target="_blank">PyWebIO</a>'); """, css_file="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css")
 
 
 if __name__ == '__main__':
