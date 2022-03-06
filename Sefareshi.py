@@ -582,7 +582,7 @@ def selected_color_mode():
 
 def generate():
     
-    html_footer_code = og_html_footer_code + """ | <a href="https://sefareshi.herokuapp.com">سفارشی!</a>"""
+    html_footer_code = og_html_footer_code + """ | <a href="https://sefareshi.herokuapp.com" target="_blank">سفارشی!</a>"""
 
     selected_font()
     selected_light_bg()
@@ -759,7 +759,7 @@ pre {
 
 
 
-""", js_code="""$('footer').html('<a href="https://instagram.com/pikhosh" target="_blank" title="صفحه اینستاگرام"><i class="ri-instagram-line"></i></a><a href="https://youtube.com/channel/UCky4IRq9d_XRdNuWcQCqD3g" target="_blank" title="کانال یوتیوب"><i class="ri-youtube-line"></i></a><a href="https://github.com/pikhosh/Sefareshi" target="_blank" title="مخزن گیت هاب"><i class="ri-github-line"></i></a> طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> | قدرت گرفته از <a href="https://www.pyweb.io/" target="_blank">PyWebIO</a>'); """, css_file="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css")
+""", js_code="""$('footer').html('<a href="https://instagram.com/pikhosh" target="_blank" title="صفحه اینستاگرام"><i class="ri-instagram-line"></i></a><a href="https://youtube.com/channel/UCky4IRq9d_XRdNuWcQCqD3g" target="_blank" title="کانال یوتیوب"><i class="ri-youtube-line"></i></a><a href="https://github.com/pikhosh/Sefareshi" target="_blank" title="مخزن گیت هاب"><i class="ri-github-line"></i></a> طراح: <a href="https://pikhosh.blog.ir" target="_blank" title="وبلاگ طراح قالب">پیخوش</a> | قدرت گرفته از <a href="https://www.pyweb.io/" target="_blank">PyWebIO</a>'); """, css_file="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css")
 
 
 if __name__ == '__main__':
