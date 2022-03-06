@@ -453,17 +453,32 @@ def selected_color_mode():
             var root = document.documentElement;
             var darkModeLabel = document.querySelector("#dark-mode-label")
 
+
             if (darkModeCheckBox) {
+                localStorage.setItem("colormode", "dark");
                 root.setAttribute("class", "dark-mode")
                 darkModeLabel.innerHTML = `<i class="ri-lightbulb-line"></i>`
                 darkModeLabel.title = ("title", "نه دیگه خیلی تاریکه؛ روشن کنین آقا!")
 
             } else {
+                localStorage.setItem("colormode", "light");
                 root.removeAttribute("class", "dark-mode")
                 darkModeLabel.innerHTML = `<i class="ri-lightbulb-flash-line"></i>`
                 darkModeLabel.title = ("title", "حالا خودمونیم... خاموش کنیم بهتر بود!")
-
             }
+
+
+        }
+
+
+        if (localStorage.getItem("colormode") == "dark") {
+            document.querySelector("#dark-mode-button").checked = true
+            darkMode()
+
+        } else {
+            document.querySelector("#dark-mode-button").checked = false
+            darkMode()
+
         }
     </script>"""
         global html_dark_mode_icon 
