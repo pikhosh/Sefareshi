@@ -156,6 +156,46 @@ code {
         </h1>"""
 
 
+            global og_html_read_time_code
+            og_html_read_time_code = """<div class="post-page">
+
+
+
+                    <div class="post-page-content-section">
+
+
+                        <check:if post_image>
+                                <div class="thumbnail">
+
+                                    <img src="(*post_image*)">
+
+
+                                </div>
+                            </check:if>
+
+                        <div class="other-than-image">
+                            <div class="post-icon">
+
+                                <i class="ri-file-text-line"></i>
+                            </div>
+
+
+
+                            <div class="other-than-icon">
+
+
+
+
+
+                                <div class="iconandtitle">
+
+                                    <h1> <a href="(*post_link*)">(*post_title*)</a> </h1>
+                                </div>
+
+
+                                <div class="detail">"""
+
+
             global og_html_footer_code
             og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a>"""
 
@@ -247,6 +287,12 @@ code {
 
 
 
+            og_html_read_time_code = """<div id="post-detail">
+                <h3>(*post_date format="%d %B %y"*)</h3>"""
+
+
+
+
             og_html_footer_code = """(*copyright_notice*) | طراح: <a href="https://pikhosh.blog.ir" target="blank" title="وبلاگ طراح قالب">پیخوش</a> (الهام گرفته از: <a href="https://github.com/joway/hugo-theme-yinyang" target="_blank" title="منبع طراحی">YinYang)</a>"""
 
 
@@ -269,6 +315,17 @@ code {
 
         selected_font_preview(True)
 
+        global html_script_code
+        html_script_code = og_html_script_code
+
+        global html_dark_mode_icon
+        html_dark_mode_icon = og_html_dark_mode_icon
+
+        global css_dark_mode_code
+        css_dark_mode_code = og_css_dark_mode_code
+        
+        global html_read_time_code
+        html_read_time_code = og_html_read_time_code
 
 
 
@@ -433,21 +490,26 @@ def selected_js(js_change):
 
     if pin.js_feature == ['امکان استفاده از جاوا اسکریپت رو روی وبلاگ تون فعال کردین؟']:
         with use_scope("js"):
-            put_checkbox("js_feature_list", options=["اضافه کردن زمان مورد نیاز برای مطالعه مطالب",
-                "اضافه کردن دکمه برای کنترل حالت رنگی",
+            put_checkbox("js_feature_list", options=["اضافه کردن دکمه برای کنترل حالت رنگی",
+            "اضافه کردن زمان مورد نیاز برای مطالعه مطالب"
                 ])
+            js_feature_list_change = pin_on_change("js_feature_list", onchange=selected_js_feature_list)
     elif pin.js_feature == []:
         with use_scope("js", clear=True):
             put_text("")
 
 
 
-def selected_color_mode():
-    if pin.js_feature_list == ["اضافه کردن دکمه برای کنترل حالت رنگی"]:
-        
+def selected_js_feature_list(js_feature_list_change):
 
-        global html_script_code
-        html_script_code = og_html_script_code + """<script>
+    global html_script_code
+    html_script_code = og_html_script_code
+
+    
+    if "اضافه کردن دکمه برای کنترل حالت رنگی" in pin.js_feature_list:
+
+        
+        html_script_code = html_script_code + """<script>
         function darkMode() {
             var darkModeCheckBox = document.querySelector("#dark-mode-button").checked
             var root = document.documentElement;
@@ -481,10 +543,12 @@ def selected_color_mode():
 
         }
     </script>"""
+        
         global html_dark_mode_icon 
         html_dark_mode_icon = og_html_dark_mode_icon + """<input type="checkbox" id="dark-mode-button" onclick="darkMode()">
         <label for="dark-mode-button" id="dark-mode-label" title="آقا برقا رو خاموش کنیم؟"><i class="ri-lightbulb-flash-line"></i></label>"""       
         
+
         if pin.theme_select == "دفترچه":
             global css_dark_mode_code
             css_dark_mode_code = """.prettyprint>span {
@@ -537,7 +601,6 @@ def selected_color_mode():
     margin-right: 2px;
 }"""
             
-
         elif pin.theme_select == "افکار":
             css_dark_mode_code = """body {
     background-color: var(--BackgroundColor);
@@ -566,19 +629,60 @@ def selected_color_mode():
     font-size: large;
     margin-right: 2px;
 }"""
-            
+    
 
     else:
         
 
-        html_script_code = og_html_script_code
-
         html_dark_mode_icon = og_html_dark_mode_icon
 
-        
         css_dark_mode_code = og_css_dark_mode_code
-
         
+        
+
+    if "اضافه کردن زمان مورد نیاز برای مطالعه مطالب" in pin.js_feature_list:
+
+        html_script_code = html_script_code + """<script>
+        var postContent = document.querySelector(".text-content").innerText
+        var readTimeText = document.querySelector("#read-time")
+        var contentWordCount = postContent.split(" ").length
+        const wordsPerMinute = 200
+        var readTime = Math.round(contentWordCount / wordsPerMinute).toLocaleString("fa-IR")
+
+        if (readTime == "۰") {
+            console.log("یه دیقه و کمتر")
+            console.log(readTime)
+            console.log(contentWordCount)
+            readTimeText.innerText = "کمتر از یک دقیقه"
+
+        } else {
+            console.log(readTime)
+            console.log(contentWordCount)
+            readTimeText.innerText = readTime + " دقیقه"
+        }
+    </script>"""
+        
+
+        if pin.theme_select == "دفترچه":
+            
+            global html_read_time_code 
+            html_read_time_code = og_html_read_time_code + """<span id="read-time-text">زمان مطالعه: </span>
+                                    <span id="read-time">نامشخص</span> | """  
+            
+
+        elif pin.theme_select == "افکار":
+
+            html_read_time_code = og_html_read_time_code + """<h3 id="read-time-text">زمان مطالعه: <span id="read-time">نامشخص</span></h3>"""
+        
+    else:
+        
+        html_read_time_code = og_html_read_time_code   
+
+
+    if bool(pin.js_feature_list) == False:
+        html_script_code = og_html_script_code
+
+
 
 def generate():
     
@@ -588,17 +692,21 @@ def generate():
     selected_light_bg()
     selected_dark_bg()
     selected_other_feature()
-    selected_color_mode()
+
+
     
     if pin.theme_select == "دفترچه":
         global final_html_code
-        final_html_code = daftarche_html_content.replace(og_html_font_code, html_font_code).replace(og_html_list_img_code, html_img_code).replace(og_html_post_img_code, html_img_code).replace(og_html_script_code, html_script_code).replace(og_html_dark_mode_icon, html_dark_mode_icon).replace(og_html_footer_code, html_footer_code)
+        final_html_code = daftarche_html_content.replace(og_html_font_code, html_font_code).replace(og_html_list_img_code, html_img_code).replace(og_html_post_img_code, html_img_code).replace(og_html_script_code, html_script_code).replace(og_html_dark_mode_icon, html_dark_mode_icon).replace(og_html_read_time_code, html_read_time_code).replace(og_html_footer_code, html_footer_code)
         global final_css_code
         final_css_code = daftarche_css_content.replace(og_css_font_code, css_font_code).replace(og_css_light_bg, css_light_bg).replace(og_css_dark_bg, css_dark_bg).replace(og_css_dark_mode_code, css_dark_mode_code)
 
+
     elif pin.theme_select == "افکار":
-        final_html_code = afkar_html_content.replace(og_html_font_code, html_font_code).replace(og_html_post_img_code, html_img_code).replace(og_html_script_code, html_script_code).replace(og_html_dark_mode_icon, html_dark_mode_icon).replace(og_html_footer_code, html_footer_code)
+        final_html_code = afkar_html_content.replace(og_html_font_code, html_font_code).replace(og_html_post_img_code, html_img_code).replace(og_html_script_code, html_script_code).replace(og_html_dark_mode_icon, html_dark_mode_icon).replace(og_html_read_time_code, html_read_time_code).replace(og_html_footer_code, html_footer_code)
         final_css_code = afkar_css_content.replace(og_css_font_code, css_font_code).replace(og_css_light_bg, css_light_bg).replace(og_css_dark_bg, css_dark_bg).replace(og_css_dark_mode_code, css_dark_mode_code)
+        
+
 
     with use_scope("output", clear=True):
         put_markdown("# 👨‍🍳 کد شما حاضره:")
@@ -609,9 +717,9 @@ def generate():
         put_markdown("کد CSS قالب")
         put_code(final_css_code, 'css', rows=12)
         put_button("کپی کن!", onclick=copy_css, color="info")
+ 
+    
 
-
-   
 def copy_html():
     run_js('navigator.clipboard.writeText(FHC)', FHC=final_html_code)
     toast("حله کپی شد :) برو عشق کن")
@@ -628,7 +736,7 @@ def main():
 
 
     
-    image_url="https://bayanbox.ir/view/263351585038014583/Pashm.jpg"
+    image_url="https://bayanbox.ir/download/4316709884354097472/Sefareshi-Favicon.png"
     run_js("""
     $('#favicon32,#favicon16').remove(); 
     $('head').append('<link rel="icon" type="image/png" href="%s">')
@@ -672,7 +780,6 @@ def main():
 
 
     put_markdown("## جاوا اسکریپت")
-    put_info("گزینه «زمان مطالعه» هنوز در دست توسعه است! مایه خوشحالیه اگه صفحات رو دنبال کنین تا به محض آماده سازی مطلع بشین :)")
     put_checkbox("js_feature", options=["امکان استفاده از جاوا اسکریپت رو روی وبلاگ تون فعال کردین؟"])
     js_change = pin_on_change(name="js_feature", onchange=selected_js)
 
@@ -759,7 +866,7 @@ pre {
 
 
 
-""", js_code="""$('footer').html('<a href="https://instagram.com/pikhosh" target="_blank" title="صفحه اینستاگرام"><i class="ri-instagram-line"></i></a><a href="https://youtube.com/channel/UCky4IRq9d_XRdNuWcQCqD3g" target="_blank" title="کانال یوتیوب"><i class="ri-youtube-line"></i></a><a href="https://github.com/pikhosh/Sefareshi" target="_blank" title="مخزن گیت هاب"><i class="ri-github-line"></i></a> طراح: <a href="https://pikhosh.blog.ir" target="_blank" title="وبلاگ طراح قالب">پیخوش</a> | قدرت گرفته از <a href="https://www.pyweb.io/" target="_blank">PyWebIO</a>'); """, css_file="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css")
+""", js_code="""$('footer').html('<a href="https://instagram.com/pikhosh" target="_blank" title="صفحه اینستاگرام"><i class="ri-instagram-line"></i></a><a href="https://youtube.com/channel/UCky4IRq9d_XRdNuWcQCqD3g" target="_blank" title="کانال یوتیوب"><i class="ri-youtube-line"></i></a> (طراح: <a href="https://pikhosh.blog.ir" target="_blank" title="وبلاگ طراح قالب">پیخوش</a> | قدرت گرفته از <a href="https://www.pyweb.io/" target="_blank">PyWebIO</a>) <a href="https://github.com/pikhosh/Sefareshi" target="_blank" title="مخزن گیت هاب"><i class="ri-github-line"></i></a><a href="https://hamibash.com/pikhosh" target="_blank" title="دونیت"><i class="ri-money-dollar-circle-line"></i></a>'); """, css_file="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css")
 
 
 if __name__ == '__main__':
