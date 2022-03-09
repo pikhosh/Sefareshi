@@ -499,6 +499,19 @@ def selected_js(js_change):
             put_text("")
 
 
+            global html_script_code
+            html_script_code = og_html_script_code
+
+            global html_dark_mode_icon
+            html_dark_mode_icon = og_html_dark_mode_icon
+
+            global css_dark_mode_code
+            css_dark_mode_code = og_css_dark_mode_code
+            
+            global html_read_time_code
+            html_read_time_code = og_html_read_time_code
+
+
 
 def selected_js_feature_list(js_feature_list_change):
 
@@ -637,6 +650,41 @@ def selected_js_feature_list(js_feature_list_change):
         html_dark_mode_icon = og_html_dark_mode_icon
 
         css_dark_mode_code = og_css_dark_mode_code
+
+        html_script_code = html_script_code.replace("""<script>
+        function darkMode() {
+            var darkModeCheckBox = document.querySelector("#dark-mode-button").checked
+            var root = document.documentElement;
+            var darkModeLabel = document.querySelector("#dark-mode-label")
+
+
+            if (darkModeCheckBox) {
+                localStorage.setItem("colormode", "dark");
+                root.setAttribute("class", "dark-mode")
+                darkModeLabel.innerHTML = `<i class="ri-lightbulb-line"></i>`
+                darkModeLabel.title = ("title", "نه دیگه خیلی تاریکه؛ روشن کنین آقا!")
+
+            } else {
+                localStorage.setItem("colormode", "light");
+                root.removeAttribute("class", "dark-mode")
+                darkModeLabel.innerHTML = `<i class="ri-lightbulb-flash-line"></i>`
+                darkModeLabel.title = ("title", "حالا خودمونیم... خاموش کنیم بهتر بود!")
+            }
+
+
+        }
+
+
+        if (localStorage.getItem("colormode") == "dark") {
+            document.querySelector("#dark-mode-button").checked = true
+            darkMode()
+
+        } else {
+            document.querySelector("#dark-mode-button").checked = false
+            darkMode()
+
+        }
+    </script>""", "")
         
         
 
@@ -676,11 +724,36 @@ def selected_js_feature_list(js_feature_list_change):
         
     else:
         
-        html_read_time_code = og_html_read_time_code   
+        html_read_time_code = og_html_read_time_code
+        
+        html_script_code = html_script_code.replace("""<script>
+        var postContent = document.querySelector(".text-content").innerText
+        var readTimeText = document.querySelector("#read-time")
+        var contentWordCount = postContent.split(" ").length
+        const wordsPerMinute = 200
+        var readTime = Math.round(contentWordCount / wordsPerMinute).toLocaleString("fa-IR")
+
+        if (readTime == "۰") {
+            console.log("یه دیقه و کمتر")
+            console.log(readTime)
+            console.log(contentWordCount)
+            readTimeText.innerText = "کمتر از یک دقیقه"
+
+        } else {
+            console.log(readTime)
+            console.log(contentWordCount)
+            readTimeText.innerText = readTime + " دقیقه"
+        }
+    </script>""", "")
+        
 
 
     if bool(pin.js_feature_list) == False:
         html_script_code = og_html_script_code
+        html_read_time_code = og_html_read_time_code
+        html_dark_mode_icon = og_html_dark_mode_icon
+        css_dark_mode_code = og_css_dark_mode_code
+
 
 
 
