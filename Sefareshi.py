@@ -686,7 +686,7 @@ def selected_js_feature_list(js_feature_list_change):
 
 def generate():
     
-    html_footer_code = og_html_footer_code + """ | <a href="https://sefareshi.herokuapp.com" target="_blank">سفارشی!</a>"""
+    html_footer_code = og_html_footer_code + """ | <a href="https://sefareshi.herokuapp.com" target="_blank" title="ساخته شده با ابزار سفارشی!">سفارشی!</a>"""
 
     selected_font()
     selected_light_bg()
