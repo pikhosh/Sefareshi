@@ -790,6 +790,7 @@ def generate():
         put_markdown("کد CSS قالب")
         put_code(final_css_code, 'css', rows=12)
         put_button("کپی کن!", onclick=copy_css, color="info")
+        scroll_to("output", "middle")
  
     
 
