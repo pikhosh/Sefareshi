@@ -1,1 +1,0 @@
-web: python Sefareshi.py --port=$PORT

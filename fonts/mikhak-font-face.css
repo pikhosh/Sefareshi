@@ -1,0 +1,71 @@
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/1040677885662615180/Mikhak-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/854336925534967848/Mikhak-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/4388629218091153606/Mikhak-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/8413155434566873006/Mikhak-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/283990535552279687/Mikhak-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/7465970816521251235/Mikhak-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/3493660717197173280/Mikhak-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/2884916398163044109/Mikhak-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mikhak;
+  src: url("https://bayanbox.ir/download/4151155055122587148/Mikhak-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
