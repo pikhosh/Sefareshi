@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<head>
+
+  <!-- ================================================== -->
+  <!-- These are not required for the Blog.IR version -->
+  <title>سفارشی!</title>
+
+  <meta name="viewport" content="width=device-width initial-scale=1.0" />
+  <link rel="icon" href="https://bayanbox.ir/view/4316709884354097472/Sefareshi-Favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./script.js"></script>
+  <!-- ================================================== -->
+
+  <!-- ================================================== -->
+  <!-- Required fonts for the font preview section -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet" href="https://bayanbox.ir/download/5716984447959101916/behdad-font-face.css">
+  <link rel="stylesheet" href="https://bayanbox.ir/download/6910266371077145419/mikhak-font-face.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"
+    type="text/css" />
+  <!-- ================================================== -->
+
+  <!-- ================================================== -->
+  <!-- Modules needed to apply changes to themes -->
+  <script defer src="https://bayanbox.ir/download/7282506687475275019/fix-head-tags.js"></script>
+
+  <script defer src="https://bayanbox.ir/download/5305533559830740177/change-font.js"></script>
+  <script defer src="https://bayanbox.ir/download/3439704906119048198/change-colors.js"></script>
+  <script defer src="https://bayanbox.ir/download/4380357226815639648/toggle-thumbnail.js"></script>
+  <script defer src="https://bayanbox.ir/download/2445812835688548463/add-read-time-script.js"></script>
+  <script defer src="https://bayanbox.ir/download/6015758554293783874/add-color-mode-button.js"></script>
+
+  <script defer src="https://bayanbox.ir/download/1169059868064447706/add-footer-credit.js"></script>
+  <!-- ================================================== -->
+
+</head>
+
+<body dir="rtl">
+
+
+  <h1>سفارشی!</h1>
+
+  <!-- ================================================== -->
+  <!-- Announcements related to development -->
+  <div id="alerts" class="flex col">
+
+    <blockquote class="success">
+
+      ✨
+      ویژگی های آینده برای توسعه:
+
+      <ol>
+
+        <li>
+          قابلیت انتخاب تصویر یا الگو برای پس زمینه
+        </li>
+
+        <li>
+          قابلیت تنظیم و افزودن لینک های شبکه اجتماعی
+        </li>
+
+      </ol>
+
+    </blockquote>
+
+  </div>
+  <!-- ================================================== -->
+
+  <hr />
+
+  <!-- ================================================== -->
+  <!-- Theme selection section -->
+  <h2 class="flex row" id="choose-theme-heading">
+
+    🧐 قالب مورد نظرت رو انتخاب کن
+
+    <div id="loading"></div>
+
+  </h2>
+
+  <div onchange="themePreview()">
+    <div id="daftarche-theme-radio">
+      <input type="radio" id="daftarche" name="theme" />
+      <label for="daftarche">دفترچه</label>
+    </div>
+
+    <div id="afkar-theme-radio">
+      <input type="radio" id="afkar" name="theme" />
+      <label for="afkar">افکار</label>
+    </div>
+  </div>
+
+  <div id="theme-preview-section" class="flex justify-center col">
+    <img src="" alt="" />
+    <img src="" alt="" />
+  </div>
+  <!-- ================================================== -->
+
+  <hr />
+
+  <!-- ================================================== -->
+  <!-- Font selection section -->
+  <h2>✒️ کدوم فونت؟</h2>
+
+  <blockquote class="info release-note">
+
+    📣
+    آخرین بروزرسانی ها:
+
+    <ol>
+
+      <li class="new">
+        افزودن فونت «میخک»
+      </li>
+
+      <li class="new">
+        افزودن فونت «وزیر متن»
+      </li>
+
+    </ol>
+
+  </blockquote>
+
+  <fieldset onchange="fontPreview()" disabled>
+    <div id="sahel-font-radio">
+      <input type="radio" id="sahel" name="font" />
+      <label for="sahel">ساحل</label>
+    </div>
+
+    <div id="behdad-font-radio">
+      <input type="radio" id="behdad" name="font" />
+      <label for="behdad">بهداد</label>
+    </div>
+
+    <div id="mikhak-font-radio">
+      <input type="radio" id="mikhak" name="font" />
+      <label for="mikhak">میخک</label>
+    </div>
+
+    <div id="vazirmatn-font-radio">
+      <input type="radio" id="vazirmatn" name="font" />
+      <label for="vazirmatn">وزیر متن</label>
+    </div>
+  </fieldset>
+
+  <blockquote id="font-preview-section">
+    یه
+
+    <strong>همچین</strong>
+
+    شمایلی قراره داشته باشه
+
+    <em>این فونت</em>
+
+    دوست من!
+
+    <br />
+    <br />
+
+    من حتی می تونم به چرت و پرت نوشتن ادامه بدم تا بتونی ببینی که توی متون بلند تر به چه شکل در میاد این فونت! الان برات
+    مفهوم تره؟ امیدوارم :)
+  </blockquote>
+  <!-- ================================================== -->
+
+  <hr />
+
+  <!-- ================================================== -->
+  <!-- BG Color selection section -->
+  <h2>🎨 کدوم رنگ؟</h2>
+
+  <blockquote class="info release-note">
+
+    📣
+    آخرین بروزرسانی ها:
+
+    <ol>
+
+      <li class="new">
+        قابلیت کنترل رنگ متون
+      </li>
+
+      <li class="new">
+        قابلیت کنترل رنگ پس زمینه ثانویه قالب «دفترچه»
+      </li>
+
+      <li class="new">
+        قابلیت کنترل رنگ پس زمینه المان های داخلی قالب «دفترچه»
+      </li>
+
+    </ol>
+
+  </blockquote>
+
+  <!-- ------------------------- -->
+  <!-- Main BG color -->
+  <fieldset disabled>
+    <h3>
+      🌞
+      حالت روشن:
+    </h3>
+
+    <div class="flex row align-center color-options">
+
+      <h4>
+        پس زمینه اصلی:
+      </h4>
+
+      <input type="color" id="light-mode-bg" onchange="lightBGColorChange()" />
+
+    </div>
+
+    <div class="flex row align-center color-options">
+
+      <h4>
+        متون:
+      </h4>
+
+      <input type="color" id="light-mode-text" onchange=lightTextColorChange() />
+
+    </div>
+
+    <!-- ------------------------- -->
+    <!-- Daftarche specific options  -->
+    <div class="flex row align-center color-options daftarche-only">
+
+      <h4>
+        پس زمینه ثانویه:
+      </h4>
+
+      <input type="color" id="light-mode-secondary-bg" onchange=lightSecondaryBGColorChange() />
+
+    </div>
+
+    <div class="flex row align-center color-options daftarche-only">
+
+      <h4>
+        پس زمینه المان های داخلی:
+      </h4>
+
+      <input type="color" id="light-mode-tertiary-bg" onchange=lightTertiaryBGColorChange() />
+
+    </div>
+    <!-- ------------------------- -->
+
+  </fieldset>
+  <!-- ------------------------- -->
+
+  <!-- ------------------------- -->
+  <!-- Text color -->
+  <fieldset disabled>
+    <h3>
+      🌚
+      حالت تاریک:
+    </h3>
+
+
+    <div class="flex row align-center color-options">
+
+      <h4>
+        پس زمینه اصلی:
+      </h4>
+
+      <input type="color" id="dark-mode-bg" onchange="darkBGColorChange()" />
+
+    </div>
+
+
+    <div class="flex row align-center color-options">
+
+      <h4>
+        متون:
+      </h4>
+
+      <input type="color" id="dark-mode-text" onchange=darkTextColorChange() />
+
+    </div>
+
+    <!-- ------------------------- -->
+    <!-- Daftarche specific options  -->
+    <div class="flex row align-center color-options daftarche-only">
+
+      <h4>
+        پس زمینه ثانویه:
+      </h4>
+
+      <input type="color" id="dark-mode-secondary-bg" onchange=darkSecondaryBGColorChange() />
+
+    </div>
+
+    <div class="flex row align-center color-options daftarche-only">
+
+      <h4>
+        پس زمینه المان های داخلی:
+      </h4>
+
+      <input type="color" id="dark-mode-tertiary-bg" onchange=darkTertiaryBGColorChange() />
+
+    </div>
+    <!-- ------------------------- -->
+
+
+  </fieldset>
+  <!-- ------------------------- -->
+  <!-- ================================================== -->
+
+  <hr />
+
+  <!-- ================================================== -->
+  <!-- Other features selection section -->
+  <h2>🧩 ویژگی های دیگه</h2>
+
+  <fieldset disabled>
+    <input type="checkbox" id="thumbnail" onchange="thumbnailCheck()" />
+    <label for="thumbnail">قابلیت نمایش تصاویر اصلی مطالب</label>
+  </fieldset>
+  <!-- ================================================== -->
+
+  <hr />
+
+  <!-- ================================================== -->
+  <!-- JS spcific features selection section -->
+  <h2>🪄 جاوا اسکریپت</h2>
+
+  <fieldset disabled>
+    <input type="checkbox" id="js" onchange="jsFeaturesToggle()" />
+    <label for="js">«امکان استفاده از جاواسکریپت» رو برای وبلاگ تون فعال کردین؟</label>
+
+    <div id="js-features-section">
+      <div>
+        <input type="checkbox" id="read-time" onchange="readTimeChecked()" />
+        <label for="read-time">اضافه کردن «زمان مورد نیاز برای مطالعه مطلب»</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="color-mode" onchange="colorModeChecked()" />
+        <label for="color-mode">اضافه کردن دکمه برای کنترل حالت رنگی</label>
+      </div>
+    </div>
+  </fieldset>
+  <!-- ================================================== -->
+
+  <hr />
+
+  <!-- ================================================== -->
+  <!-- Generate button section -->
+
+  <fieldset id="generate-button-section" class="flex justify-center" disabled>
+    <button type="submit" id="generate" onclick="generate()">سفارشی کن 🗿</button>
+  </fieldset>
+  <!-- ================================================== -->
+
+  <hr />
+
+  <!-- ================================================== -->
+  <!-- Result section -->
+  <div id="result-section">
+    <h2>🧑‍🍳 کد شما حاضره:</h2>
+
+    <h3>کد ساختار قالب</h3>
+    <pre id="generated-html"></pre>
+    <button id="generated-html-copy" onclick="finalHTMLCopy()">کپی کن!</button>
+
+    <h3>کد CSS قالب</h3>
+    <pre id="generated-css"></pre>
+    <button id="generated-css-copy" onclick="finalCSSCopy()">کپی کن!</button>
+  </div>
+  <!-- ================================================== -->
+
+</body>
+
+<footer>
+  ساخته شده با 🗿 برای بیان بلاگ | 💡
+  <a href="https://github.com/pikhosh/Sefareshi" title="کد منبع سفارشی" target="_blank">
+    منبع باز
+  </a>
+</footer>
+
+<style></style>
+
+<script></script>

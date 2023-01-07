@@ -1,0 +1,288 @@
+/* ================================================== */
+/* Variables */
+:root {
+  --darker-bg: hsl(223, 24%, 25%);
+  --loading-dots-display: none;
+  --daftarche-specific-options-display: none;
+  --success-color: #00c75a;
+  --success-shadow-color: #009945;
+  --info-color: #0099ff;
+  --info-shadow-color: #006bb3;
+  --box-shadow-settings: 5px 5px 0px 0px;
+  --inside-text-color: #ffffff;
+}
+/* ================================================== */
+
+/* ================================================== */
+/* HTML Selectors */
+a {
+  color: inherit;
+}
+
+fieldset {
+  border: none;
+}
+
+blockquote {
+  background-color: var(--darker-bg);
+  padding: 1rem;
+  color: var(--inside-text-color);
+}
+
+blockquote ol {
+  list-style-type: circle;
+  margin-block-end: 0;
+}
+
+blockquote.info {
+  background-color: var(--info-color);
+  box-shadow: var(--info-shadow-color) var(--box-shadow-settings);
+}
+
+blockquote.success {
+  background-color: var(--success-color);
+  box-shadow: var(--success-shadow-color) var(--box-shadow-settings);
+}
+
+blockquote.success,
+blockquote.info {
+  border: none;
+  border-radius: 1rem;
+}
+
+/* ------------------------- */
+/* Style related to new feature announcement */
+blockquote.release-note ol {
+  list-style-type: none;
+}
+
+blockquote.release-note li.new::before {
+  content: "جدید";
+  background-color: var(--success-color);
+  padding: 0 0.2rem;
+  border-radius: 0.3rem;
+  font-style: italic;
+}
+
+blockquote.release-note li {
+  margin: 0.3rem 0;
+}
+/* ------------------------- */
+
+hr {
+  border-color: hsl(223, 24%, 40%);
+  border-style: solid;
+  margin: 2rem 0;
+}
+
+button {
+  background-color: hsl(223, 24%, 90%);
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  border-radius: 1rem;
+  border: none;
+  transition: all linear 0.2s;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:active {
+  background-color: hsl(223, 24%, 80%);
+}
+
+button:not(:disabled):hover {
+  background-color: hsl(223, 24%, 50%);
+  color: #ffffff;
+}
+
+input[type="color"] {
+  border-radius: 0.5rem;
+  border-style: solid;
+  border: none;
+  height: 2rem;
+}
+
+pre {
+  background-color: var(--darker-bg);
+  padding: 1rem;
+  direction: ltr;
+  border-radius: 1rem 0 0 1rem;
+  height: 10rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  color: var(--inside-text-color);
+}
+
+footer {
+  background-color: var(--darker-bg);
+  text-align: center;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  color: var(--inside-text-color);
+}
+
+/* ================================================== */
+
+/* ================================================== */
+/* Some class for common styles */
+
+.col {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+/* ================================================== */
+
+/* ================================================== */
+/* Custom styles */
+
+.daftarche-only {
+  display: var(--daftarche-specific-options-display);
+}
+
+#js-features-section {
+  margin-inline-start: 1rem;
+  margin-top: 1rem;
+}
+
+#theme-preview-section {
+  gap: 0.5rem;
+}
+
+#theme-preview-section,
+#font-preview-section,
+#js-features-section,
+#result-section {
+  display: none;
+}
+
+#alerts {
+  align-items: stretch;
+  gap: 1rem;
+}
+
+#alerts blockquote {
+  margin: 0;
+  width: -webkit-fill-available;
+}
+
+/* ------------------------- */
+/* loading */
+#choose-theme-heading {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#loading::after {
+  content: "";
+  animation: loading-dots 1s infinite;
+  display: var(--loading-dots-display);
+}
+
+@keyframes loading-dots {
+  0% {
+    content: "";
+  }
+
+  33% {
+    content: ".";
+  }
+
+  66% {
+    content: "..";
+  }
+
+  100% {
+    content: "...";
+  }
+}
+/* ------------------------- */
+
+.color-options {
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.color-options > * {
+  flex-shrink: 0;
+  flex-grow: 1;
+  flex: 1;
+}
+
+@media screen and (min-width: 800px) {
+  #alerts,
+  #theme-preview-section {
+    flex-direction: row;
+  }
+
+  #theme-preview-section img {
+    max-width: 50%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  blockquote {
+    color: #ffffff;
+  }
+}
+/* ================================================== */
+
+/* ================================================== */
+/* These are styles that are not needed for the Blog.IR version */
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  border-radius: 1rem;
+}
+
+body {
+  font-family: sahel;
+  color: #ffffff;
+  margin: 0 20vw;
+  background-color: #3f4a66;
+}
+
+/* ------------------------- */
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(223, 24%, 20%);
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-corner {
+  background: #3f4a66;
+  border-radius: 0.3rem;
+}
+/* ------------------------- */
+/* ================================================== */
