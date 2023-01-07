@@ -31,8 +31,8 @@ const afkarLinks = {
 // ==================================================
 // Links to files related to JavaScript features
 const jsScriptLinks = {
-  readTime: "https://bayanbox.ir/view/5351708233263408917/read-time.js",
-  colorMode: "https://bayanbox.ir/download/137743214194032296/color-mode.js",
+  readTime: "https://bayanbox.ir/download/6815175655832720904/read-time.js",
+  colorMode: "https://bayanbox.ir/download/5935133845113091398/color-mode.js",
 };
 // ==================================================
 
