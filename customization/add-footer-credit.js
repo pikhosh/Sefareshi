@@ -13,8 +13,7 @@ function addFooterCredit(DOMOfTheme) {
 
   // It might be a good idea to use the current link that the user uses for Sefareshi instead of a static link (this way, if the Sefareshi domain changes, there will be no problem).
   // footerCreditElement.href = window.location.href;
-  // TODO: UNCOMMENT LINE ABOVE AND REMOVE LINE BELOW IN RELEASE
-  footerCreditElement.href = "https://pikhosh.blog.ir";
+  footerCreditElement.href = "https://pikhosh.blog.ir/page/Sefareshi";
 
   footerCreditElement.title = "ساخته شده با ابزار سفارشی!";
 
