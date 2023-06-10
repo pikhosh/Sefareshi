@@ -69,12 +69,6 @@ blockquote.release-note li {
 }
 /* ------------------------- */
 
-hr {
-  border-color: hsl(223, 24%, 40%);
-  border-style: solid;
-  margin: 2rem 0;
-}
-
 button {
   background-color: hsl(223, 24%, 90%);
   padding: 0.5rem 1rem;
