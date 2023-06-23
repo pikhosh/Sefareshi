@@ -9,26 +9,30 @@ function addReadTimeElements(DOMOfTheme, selectedOptions) {
 
   // DAFTARCHE
   if (selectedOptions.theme === themes.Daftarche) {
-    // Create an element before reading time for the title
-    const readTimeTitleElement = document.createElement("span");
-    readTimeTitleElement.innerText = "زمان مطالعه: ";
+    const readTimeInfoBoxElement = document.createElement("span");
+    readTimeInfoBoxElement.classList.add("post-page-info-box");
+
+    // Create an element before reading time for the icon
+    const readTimeIconElement = document.createElement("span");
+    readTimeIconElement.classList.add("post-page-info-icon");
+    const readTimeIconInnerHTML = `<i class="ri-book-open-line"></i>`;
+    readTimeIconElement.innerHTML = readTimeIconInnerHTML;
 
     // Create an element to display the estimated reading time
-    const readTimeElement = document.createElement("span");
-    readTimeElement.innerText = "نامشخص";
-    readTimeElement.id = "read-time";
+    const readTimeContentElement = document.createElement("span");
+    readTimeContentElement.classList.add("post-page-info-content");
+    readTimeContentElement.id = "read-time";
+    readTimeContentElement.innerText = "نامشخص";
 
-    // Create an delimiter element for daftarche
-    const delimiterElement = document.createElement("span");
-    delimiterElement.innerText = " |";
+    // Appending Icon and Content to the Parent
+    readTimeInfoBoxElement.appendChild(readTimeIconElement);
+    readTimeInfoBoxElement.appendChild(readTimeContentElement);
 
     // Find the post details section
     const postDetailSection = postSectionOfTheme.querySelector(".detail");
 
-    // Add read-time elements before the first child of the section (order is important because the title needs to be the first child)
-    postDetailSection.insertBefore(delimiterElement, postDetailSection.firstChild);
-    postDetailSection.insertBefore(readTimeElement, postDetailSection.firstChild);
-    postDetailSection.insertBefore(readTimeTitleElement, postDetailSection.firstChild);
+    // Add read-time elements before the first child of the section
+    postDetailSection.insertBefore(readTimeInfoBoxElement, postDetailSection.firstChild);
   }
 
   // AFKAR
