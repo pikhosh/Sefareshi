@@ -12,8 +12,8 @@ const daftarcheLinks = {
   html: "https://raw.githubusercontent.com/pikhosh/Daftarche/main/index.html",
   css: "https://raw.githubusercontent.com/pikhosh/Daftarche/main/style.css",
   images: {
-    light: "https://user-images.githubusercontent.com/73311467/154791394-ade77cf7-81c1-4103-95ae-3aa3922062d4.png",
-    dark: "https://user-images.githubusercontent.com/73311467/154791399-ff89d206-149f-47c4-b868-02425ddcd28b.png",
+    light: "https://user-images.githubusercontent.com/73311467/248324132-4322d841-5501-4653-afe1-074464b77585.png",
+    dark: "https://user-images.githubusercontent.com/73311467/248324006-4bf3f5fd-dca3-41c1-9165-4f645906cce4.png",
   },
 };
 
