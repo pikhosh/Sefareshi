@@ -12,7 +12,8 @@ const daftarcheLinks = {
   html: "https://raw.githubusercontent.com/pikhosh/Daftarche/main/index.html",
   css: "https://raw.githubusercontent.com/pikhosh/Daftarche/main/style.css",
   images: {
-    light: "https://user-images.githubusercontent.com/73311467/248324132-4322d841-5501-4653-afe1-074464b77585.png",
+    light:
+      "https://user-images.githubusercontent.com/73311467/248324132-4322d841-5501-4653-afe1-074464b77585.png",
     dark: "https://user-images.githubusercontent.com/73311467/248324006-4bf3f5fd-dca3-41c1-9165-4f645906cce4.png",
   },
 };
@@ -22,7 +23,8 @@ const afkarLinks = {
   html: "https://raw.githubusercontent.com/pikhosh/Afkar/main/index.html",
   css: "https://raw.githubusercontent.com/pikhosh/Afkar/main/style.css",
   images: {
-    light: "https://user-images.githubusercontent.com/73311467/154895089-638b539a-a912-4924-b7e6-989eb0e506f9.png",
+    light:
+      "https://user-images.githubusercontent.com/73311467/154895089-638b539a-a912-4924-b7e6-989eb0e506f9.png",
     dark: "https://user-images.githubusercontent.com/73311467/154895116-13b86329-68b7-479e-a3a4-5404b17a5585.png",
   },
 };
@@ -67,10 +69,12 @@ let selectedOptions = {
     lightModeColors: {
       secondaryBGColor: "",
       tertiaryBGColor: "",
+      selectedBGColor: "",
     },
     darkModeColors: {
       secondaryBGColor: "",
       tertiaryBGColor: "",
+      selectedBGColor: "",
     },
   },
 
@@ -94,6 +98,7 @@ const regexList = {
     textColor: /(?<=--TextColor: )[^].*(?!\n)/,
     secondaryBGColor: /(?<=--Secondary-Color: )[^].*(?!\n)/,
     tertiaryBGColor: /(?<=--Tertiary-Color: )[^].*(?!\n)/,
+    selectedBGColor: /(?<=--SelectedBGColor: )[^].*(?!\n)/,
   },
   afkar: {
     mainBGColor: /(?<=--BackgroundColor: )[^].*(?!\n)/,
@@ -133,10 +138,12 @@ const elementList = {
     lightMode: {
       secondaryBGInput: document.querySelector("#light-mode-secondary-bg"),
       tertiaryBGInput: document.querySelector("#light-mode-tertiary-bg"),
+      selectedBGInput: document.querySelector("#light-mode-selected-bg"),
     },
     darkMode: {
       secondaryBGInput: document.querySelector("#dark-mode-secondary-bg"),
       tertiaryBGInput: document.querySelector("#dark-mode-tertiary-bg"),
+      selectedBGInput: document.querySelector("#dark-mode-selected-bg"),
     },
   },
 };
@@ -285,16 +292,29 @@ function lightTextColorChange() {
 
 // Secondary BG
 function lightSecondaryBGColorChange() {
-  const lightSecondaryBGColorInputValue = elementList.daftarcheColors.lightMode.secondaryBGInput.value;
+  const lightSecondaryBGColorInputValue =
+    elementList.daftarcheColors.lightMode.secondaryBGInput.value;
 
-  selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor = lightSecondaryBGColorInputValue;
+  selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor =
+    lightSecondaryBGColorInputValue;
 }
 
 // Tertiary BG
 function lightTertiaryBGColorChange() {
-  const lightTertiaryBGColorInputValue = elementList.daftarcheColors.lightMode.tertiaryBGInput.value;
+  const lightTertiaryBGColorInputValue =
+    elementList.daftarcheColors.lightMode.tertiaryBGInput.value;
 
-  selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor = lightTertiaryBGColorInputValue;
+  selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor =
+    lightTertiaryBGColorInputValue;
+}
+
+// Selected BG
+function lightSelectedBGColorChange() {
+  const lightSelectedBGColorInputValue =
+    elementList.daftarcheColors.lightMode.selectedBGInput.value;
+
+  selectedOptions.daftarcheSpecificColors.lightModeColors.selectedBGColor =
+    lightSelectedBGColorInputValue;
 }
 // -------------------------
 
@@ -317,16 +337,27 @@ function darkTextColorChange() {
 
 // Secondary BG
 function darkSecondaryBGColorChange() {
-  const darkSecondaryBGColorInputValue = elementList.daftarcheColors.darkMode.secondaryBGInput.value;
+  const darkSecondaryBGColorInputValue =
+    elementList.daftarcheColors.darkMode.secondaryBGInput.value;
 
-  selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor = darkSecondaryBGColorInputValue;
+  selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor =
+    darkSecondaryBGColorInputValue;
 }
 
 // Tertiary BG
 function darkTertiaryBGColorChange() {
   const darkTertiaryBGColorInputValue = elementList.daftarcheColors.darkMode.tertiaryBGInput.value;
 
-  selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor = darkTertiaryBGColorInputValue;
+  selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor =
+    darkTertiaryBGColorInputValue;
+}
+
+// Selected BG
+function darkSelectedBGColorChange() {
+  const darkSelectedBGColorInputValue = elementList.daftarcheColors.darkMode.selectedBGInput.value;
+
+  selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor =
+    darkSelectedBGColorInputValue;
 }
 // ==================================================
 
@@ -510,16 +541,41 @@ function getDefaults(ThemeCodes) {
     case themes.Daftarche:
       elementList.root.style.setProperty("--daftarche-specific-options-display", "flex");
       // Light
-      selectedOptions.lightModeColors.mainBG = lightModePart.match(regexList.daftarche.mainBGColor)[0];
+      selectedOptions.lightModeColors.mainBG = lightModePart.match(
+        regexList.daftarche.mainBGColor
+      )[0];
+
       selectedOptions.lightModeColors.text = lightModePart.match(regexList.daftarche.textColor)[0];
-      selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor = lightModePart.match(regexList.daftarche.secondaryBGColor)[0];
-      selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor = lightModePart.match(regexList.daftarche.tertiaryBGColor)[0];
+
+      selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor =
+        lightModePart.match(regexList.daftarche.secondaryBGColor)[0];
+
+      selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor = lightModePart.match(
+        regexList.daftarche.tertiaryBGColor
+      )[0];
+
+      selectedOptions.daftarcheSpecificColors.lightModeColors.selectedBGColor = lightModePart.match(
+        regexList.daftarche.selectedBGColor
+      )[0];
 
       // Dark
-      selectedOptions.darkModeColors.mainBG = darkModePart.match(regexList.daftarche.mainBGColor)[0];
+      selectedOptions.darkModeColors.mainBG = darkModePart.match(
+        regexList.daftarche.mainBGColor
+      )[0];
+
       selectedOptions.darkModeColors.text = darkModePart.match(regexList.daftarche.textColor)[0];
-      selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor = darkModePart.match(regexList.daftarche.secondaryBGColor)[0];
-      selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor = darkModePart.match(regexList.daftarche.tertiaryBGColor)[0];
+
+      selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor = darkModePart.match(
+        regexList.daftarche.secondaryBGColor
+      )[0];
+
+      selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor = darkModePart.match(
+        regexList.daftarche.tertiaryBGColor
+      )[0];
+
+      selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor = darkModePart.match(
+        regexList.daftarche.selectedBGColor
+      )[0];
 
       break;
 
@@ -580,11 +636,25 @@ function getDefaults(ThemeCodes) {
   elementList.darkTextInput.value = selectedOptions.darkModeColors.text;
 
   if (selectedOptions.theme === themes.Daftarche) {
-    elementList.daftarcheColors.lightMode.secondaryBGInput.value = selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor;
-    elementList.daftarcheColors.lightMode.tertiaryBGInput.value = selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor;
+    // Light mode
+    elementList.daftarcheColors.lightMode.secondaryBGInput.value =
+      selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor;
 
-    elementList.daftarcheColors.darkMode.secondaryBGInput.value = selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor;
-    elementList.daftarcheColors.darkMode.tertiaryBGInput.value = selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor;
+    elementList.daftarcheColors.lightMode.tertiaryBGInput.value =
+      selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor;
+
+    elementList.daftarcheColors.lightMode.selectedBGInput.value =
+      selectedOptions.daftarcheSpecificColors.lightModeColors.selectedBGColor;
+
+    // Dark mode
+    elementList.daftarcheColors.darkMode.secondaryBGInput.value =
+      selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor;
+
+    elementList.daftarcheColors.darkMode.tertiaryBGInput.value =
+      selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor;
+
+    elementList.daftarcheColors.darkMode.selectedBGInput.value =
+      selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor;
   }
   // -------------------------
 
@@ -661,7 +731,10 @@ function convertColorNameToHex(color) {
   const tempCanvasForColorConverting = document.createElement("canvas").getContext("2d");
 
   tempCanvasForColorConverting.fillStyle = color;
-  console.log("🚀 ~ file: script.js:487 ~ convertColorNameToHex ~  tempCanvasForColorConverting.fillStyle", tempCanvasForColorConverting.fillStyle);
+  console.log(
+    "🚀 ~ file: script.js:487 ~ convertColorNameToHex ~  tempCanvasForColorConverting.fillStyle",
+    tempCanvasForColorConverting.fillStyle
+  );
 
   return tempCanvasForColorConverting.fillStyle;
 }

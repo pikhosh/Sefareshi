@@ -13,26 +13,70 @@ function changeColors(ThemeCodes, selectedOptions, regexList) {
     // Daftarche
     case themes.Daftarche:
       // Light
-      lightModePart = lightModePart.replace(regexList.daftarche.mainBGColor, selectedOptions.lightModeColors.mainBG);
-      lightModePart = lightModePart.replace(regexList.daftarche.textColor, selectedOptions.lightModeColors.text);
-      lightModePart = lightModePart.replace(regexList.daftarche.secondaryBGColor, selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor);
-      lightModePart = lightModePart.replace(regexList.daftarche.tertiaryBGColor, selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor);
+      lightModePart = lightModePart.replace(
+        regexList.daftarche.mainBGColor,
+        selectedOptions.lightModeColors.mainBG
+      );
+      lightModePart = lightModePart.replace(
+        regexList.daftarche.textColor,
+        selectedOptions.lightModeColors.text
+      );
+      lightModePart = lightModePart.replace(
+        regexList.daftarche.secondaryBGColor,
+        selectedOptions.daftarcheSpecificColors.lightModeColors.secondaryBGColor
+      );
+      lightModePart = lightModePart.replace(
+        regexList.daftarche.tertiaryBGColor,
+        selectedOptions.daftarcheSpecificColors.lightModeColors.tertiaryBGColor
+      );
+      lightModePart = lightModePart.replace(
+        regexList.daftarche.selectedBGColor,
+        selectedOptions.daftarcheSpecificColors.lightModeColors.selectedBGColor
+      );
 
       // Dark
-      darkModePart = darkModePart.replace(regexList.daftarche.mainBGColor, selectedOptions.darkModeColors.mainBG);
-      darkModePart = darkModePart.replace(regexList.daftarche.textColor, selectedOptions.darkModeColors.text);
-      darkModePart = darkModePart.replace(regexList.daftarche.secondaryBGColor, selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor);
-      darkModePart = darkModePart.replace(regexList.daftarche.tertiaryBGColor, selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor);
+      darkModePart = darkModePart.replace(
+        regexList.daftarche.mainBGColor,
+        selectedOptions.darkModeColors.mainBG
+      );
+      darkModePart = darkModePart.replace(
+        regexList.daftarche.textColor,
+        selectedOptions.darkModeColors.text
+      );
+      darkModePart = darkModePart.replace(
+        regexList.daftarche.secondaryBGColor,
+        selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor
+      );
+      darkModePart = darkModePart.replace(
+        regexList.daftarche.tertiaryBGColor,
+        selectedOptions.daftarcheSpecificColors.darkModeColors.tertiaryBGColor
+      );
+      darkModePart = darkModePart.replace(
+        regexList.daftarche.selectedBGColor,
+        selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor
+      );
 
       break;
     // Afkar
     case themes.Afkar:
       // Light
-      lightModePart = lightModePart.replace(regexList.afkar.mainBGColor, selectedOptions.lightModeColors.mainBG);
-      lightModePart = lightModePart.replace(regexList.afkar.textColor, selectedOptions.lightModeColors.text);
+      lightModePart = lightModePart.replace(
+        regexList.afkar.mainBGColor,
+        selectedOptions.lightModeColors.mainBG
+      );
+      lightModePart = lightModePart.replace(
+        regexList.afkar.textColor,
+        selectedOptions.lightModeColors.text
+      );
       // Dark
-      darkModePart = darkModePart.replace(regexList.afkar.mainBGColor, selectedOptions.darkModeColors.mainBG);
-      darkModePart = darkModePart.replace(regexList.afkar.textColor, selectedOptions.darkModeColors.text);
+      darkModePart = darkModePart.replace(
+        regexList.afkar.mainBGColor,
+        selectedOptions.darkModeColors.mainBG
+      );
+      darkModePart = darkModePart.replace(
+        regexList.afkar.textColor,
+        selectedOptions.darkModeColors.text
+      );
       break;
   }
   // -------------------------
