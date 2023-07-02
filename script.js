@@ -70,11 +70,13 @@ let selectedOptions = {
       secondaryBGColor: "",
       tertiaryBGColor: "",
       selectedBGColor: "",
+      sidebarBoxHeaderBGColor: "",
     },
     darkModeColors: {
       secondaryBGColor: "",
       tertiaryBGColor: "",
       selectedBGColor: "",
+      sidebarBoxHeaderBGColor: "",
     },
   },
 
@@ -99,6 +101,7 @@ const regexList = {
     secondaryBGColor: /(?<=--Secondary-Color: )[^].*(?!\n)/,
     tertiaryBGColor: /(?<=--Tertiary-Color: )[^].*(?!\n)/,
     selectedBGColor: /(?<=--SelectedBGColor: )[^].*(?!\n)/,
+    sidebarBoxHeaderBGColor: /(?<=--sidebar-item-box-header-bg: )[^].*(?!\n)/,
   },
   afkar: {
     mainBGColor: /(?<=--BackgroundColor: )[^].*(?!\n)/,
@@ -139,11 +142,13 @@ const elementList = {
       secondaryBGInput: document.querySelector("#light-mode-secondary-bg"),
       tertiaryBGInput: document.querySelector("#light-mode-tertiary-bg"),
       selectedBGInput: document.querySelector("#light-mode-selected-bg"),
+      sidebarBoxHeaderBGInput: document.querySelector("#light-mode-sidebar-box-header-bg"),
     },
     darkMode: {
       secondaryBGInput: document.querySelector("#dark-mode-secondary-bg"),
       tertiaryBGInput: document.querySelector("#dark-mode-tertiary-bg"),
       selectedBGInput: document.querySelector("#dark-mode-selected-bg"),
+      sidebarBoxHeaderBGInput: document.querySelector("#dark-mode-sidebar-box-header-bg"),
     },
   },
 };
@@ -316,6 +321,15 @@ function lightSelectedBGColorChange() {
   selectedOptions.daftarcheSpecificColors.lightModeColors.selectedBGColor =
     lightSelectedBGColorInputValue;
 }
+
+// Sidebar Box Header BG
+function lightSidebarBoxHeaderBGColorChange() {
+  const lightSidebarBoxHeaderBGColorInputValue =
+    elementList.daftarcheColors.lightMode.sidebarBoxHeaderBGInput.value;
+
+  selectedOptions.daftarcheSpecificColors.lightModeColors.sidebarBoxHeaderBGColor =
+    lightSidebarBoxHeaderBGColorInputValue;
+}
 // -------------------------
 
 // -------------------------
@@ -358,6 +372,15 @@ function darkSelectedBGColorChange() {
 
   selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor =
     darkSelectedBGColorInputValue;
+}
+
+// Sidebar Box Header BG
+function darkSidebarBoxHeaderBGColorChange() {
+  const darkSidebarBoxHeaderBGColorInputValue =
+    elementList.daftarcheColors.darkMode.sidebarBoxHeaderBGInput.value;
+
+  selectedOptions.daftarcheSpecificColors.darkModeColors.sidebarBoxHeaderBGColor =
+    darkSidebarBoxHeaderBGColorInputValue;
 }
 // ==================================================
 
@@ -558,6 +581,9 @@ function getDefaults(ThemeCodes) {
         regexList.daftarche.selectedBGColor
       )[0];
 
+      selectedOptions.daftarcheSpecificColors.lightModeColors.sidebarBoxHeaderBGColor =
+        lightModePart.match(regexList.daftarche.sidebarBoxHeaderBGColor)[0];
+
       // Dark
       selectedOptions.darkModeColors.mainBG = darkModePart.match(
         regexList.daftarche.mainBGColor
@@ -576,6 +602,9 @@ function getDefaults(ThemeCodes) {
       selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor = darkModePart.match(
         regexList.daftarche.selectedBGColor
       )[0];
+
+      selectedOptions.daftarcheSpecificColors.darkModeColors.sidebarBoxHeaderBGColor =
+        darkModePart.match(regexList.daftarche.sidebarBoxHeaderBGColor)[0];
 
       break;
 
@@ -613,16 +642,33 @@ function getDefaults(ThemeCodes) {
   Object.entries(selectedOptions.lightModeColors).forEach(([key, value]) => {
     selectedOptions.lightModeColors[key] = validateColorForInputElement(value);
   });
+
+  // Daftarche specific colors
+  if (selectedOptions.theme === themes.Daftarche) {
+    Object.entries(selectedOptions.daftarcheSpecificColors.lightModeColors).forEach(
+      ([key, value]) => {
+        selectedOptions.daftarcheSpecificColors.lightModeColors[key] =
+          validateColorForInputElement(value);
+      }
+    );
+    Object.entries(selectedOptions.daftarcheSpecificColors.darkModeColors).forEach(
+      ([key, value]) => {
+        selectedOptions.daftarcheSpecificColors.darkModeColors[key] =
+          validateColorForInputElement(value);
+      }
+    );
+  }
   // -------------------------
 
   // -------------------------
   // Some test...
-  /* validateColorForInputElement('#ff0000')
-  validateColorForInputElement('#ff000085')
-  validateColorForInputElement('rgb(255 0 0)')
-  validateColorForInputElement('rgb(255 0 0 / 52%)')
-  validateColorForInputElement('hwb(0deg 0% 0%)')
-  validateColorForInputElement('hwb(0deg 0% 0% / 52%)') */
+  // validateColorForInputElement('#ff0000')
+  // validateColorForInputElement('#ff000085')
+  // validateColorForInputElement("hsl(0 0% 15% / 1)");
+  // validateColorForInputElement('rgb(255 0 0)')
+  // validateColorForInputElement('rgb(255 0 0 / 52%)')
+  // validateColorForInputElement('hwb(0deg 0% 0%)')
+  // validateColorForInputElement('hwb(0deg 0% 0% / 52%)')
   // -------------------------
 
   console.log(selectedOptions);
@@ -646,6 +692,9 @@ function getDefaults(ThemeCodes) {
     elementList.daftarcheColors.lightMode.selectedBGInput.value =
       selectedOptions.daftarcheSpecificColors.lightModeColors.selectedBGColor;
 
+    elementList.daftarcheColors.lightMode.sidebarBoxHeaderBGInput.value =
+      selectedOptions.daftarcheSpecificColors.lightModeColors.sidebarBoxHeaderBGColor;
+
     // Dark mode
     elementList.daftarcheColors.darkMode.secondaryBGInput.value =
       selectedOptions.daftarcheSpecificColors.darkModeColors.secondaryBGColor;
@@ -655,6 +704,9 @@ function getDefaults(ThemeCodes) {
 
     elementList.daftarcheColors.darkMode.selectedBGInput.value =
       selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor;
+
+    elementList.daftarcheColors.darkMode.sidebarBoxHeaderBGInput.value =
+      selectedOptions.daftarcheSpecificColors.darkModeColors.sidebarBoxHeaderBGColor;
   }
   // -------------------------
 
@@ -727,6 +779,7 @@ function validateColorForInputElement(color) {
 // ==================================================
 // Convert non-hex colors to hex code using a 2D canvas
 function convertColorNameToHex(color) {
+  console.log("🚀 ~ file: script.js:778 ~ convertColorNameToHex ~ color:", color);
   // We create a temporary canvas just as a way to convert color names into usable hex codes for HTML color input (to support possible color names in theme codes).
   const tempCanvasForColorConverting = document.createElement("canvas").getContext("2d");
 

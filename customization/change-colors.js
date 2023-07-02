@@ -33,6 +33,10 @@ function changeColors(ThemeCodes, selectedOptions, regexList) {
         regexList.daftarche.selectedBGColor,
         selectedOptions.daftarcheSpecificColors.lightModeColors.selectedBGColor
       );
+      lightModePart = lightModePart.replace(
+        regexList.daftarche.sidebarBoxHeaderBGColor,
+        selectedOptions.daftarcheSpecificColors.lightModeColors.sidebarBoxHeaderBGColor
+      );
 
       // Dark
       darkModePart = darkModePart.replace(
@@ -54,6 +58,10 @@ function changeColors(ThemeCodes, selectedOptions, regexList) {
       darkModePart = darkModePart.replace(
         regexList.daftarche.selectedBGColor,
         selectedOptions.daftarcheSpecificColors.darkModeColors.selectedBGColor
+      );
+      darkModePart = darkModePart.replace(
+        regexList.daftarche.sidebarBoxHeaderBGColor,
+        selectedOptions.daftarcheSpecificColors.darkModeColors.sidebarBoxHeaderBGColor
       );
 
       break;
